@@ -1,9 +1,3 @@
-$a: #FF4C00;
-$b: #FF3905;
-$extraBg: #141414;
-$accent1: #007AD9;
-$accent2: #12199A;
-
 // font color variables
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
 
@@ -23,6 +17,17 @@ $font-size-lg: calculate-font-size(5);
 $backgroundColor: #111111;
 $mainColor: #F6F6F6;
 $accentColor: #007AD9;
+$accentHover: #12199A;
+
+// border
+$borderStandard: 2px solid $mainColor;
+$borderRadius: 8px;
+
+// padding
+$padding-xs: 0.4rem 0.6rem;
+$padding-sm: 1rem;
+$padding-md: 1.5rem;
+$padding-lg: 2rem;
 
 // spacing variables
 $smallSpacing: 0.5rem;
