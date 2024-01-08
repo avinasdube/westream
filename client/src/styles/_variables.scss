@@ -1,0 +1,41 @@
+// font color variables
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
+
+$mainFont: 'Cabin', sans-serif;
+
+// Responsive font sizes
+@function calculate-font-size($size) {
+    @return $size * 0.6rem;
+}
+
+$font-size-xs: calculate-font-size(1.5);
+$font-size-sm: calculate-font-size(2);
+$font-size-md: calculate-font-size(3);
+$font-size-lg: calculate-font-size(5);
+
+// color variables
+$backgroundColor: #111111;
+$mainColor: #F6F6F6;
+$accentColor: #007AD9;
+$accentHover: #12199A;
+
+// border
+$borderStandard: 2px solid $mainColor;
+$borderRadius: 8px;
+
+// padding
+$padding-xs: 0.4rem 0.6rem;
+$padding-sm: 1rem;
+$padding-md: 1.5rem;
+$padding-lg: 2rem;
+
+// spacing variables
+$smallSpacing: 0.5rem;
+$mediumSpacing: 1rem;
+$largeSpacing: 1.5rem;
+
+// breakpoints variables
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px;

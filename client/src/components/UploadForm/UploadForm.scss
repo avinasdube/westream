@@ -1,0 +1,130 @@
+@import '../../styles/variables';
+
+
+#h1 {
+    font-size: $font-size-md;
+}
+
+#h2 {
+    font-size: $font-size-xs;
+    font-weight: 300;
+}
+
+.uploadFormContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $mediumSpacing;
+
+    .formHeading {
+        height: 140px;
+        border-radius: $borderRadius;
+        background-image: url('../../assets/images/welcome.jpg');
+        background-position: bottom;
+        display: flex;
+        flex-direction: column;
+
+        .blurBg {
+            height: 140px;
+            border-radius: $borderRadius;
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: $mediumSpacing;
+
+        .uploadBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: $borderStandard;
+            border-radius: $borderRadius;
+            height: 300px;
+
+            .formUploadIcon {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+                transition: 0.2s linear;
+
+                &:hover {
+                    transform: scale(1.09);
+                }
+            }
+        }
+
+        input,
+        .inputSubs {
+            width: auto;
+            background: none;
+            border: $borderStandard;
+            border-radius: $borderRadius;
+            padding: $padding-xs;
+            outline: none;
+            font-family: $mainFont;
+            color: $mainColor;
+            font-weight: 300;
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $accentColor;
+            border: none;
+            border-radius: $borderRadius;
+            outline: none;
+            padding: $padding-xs;
+            font-family: $mainFont;
+            font-size: $font-size-md;
+            font-weight: 600;
+            color: $mainColor;
+            transition: 0.2s linear;
+
+            &:hover {
+                background-color: $accentHover;
+            }
+
+            &:active {
+                transform: scale(0.98);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $breakpoint-xs) {
+    #h1 {
+        font-size: $font-size-sm;
+    }
+
+    .uploadFormContainer {
+        .formHeading {
+            height: 100px;
+
+        }
+
+        form {
+
+            .uploadBox {
+                height: 200px;
+
+                .formUploadIcon {
+                    width: 25px;
+                    height: 25px;
+                }
+            }
+
+            button {
+                padding: $padding-xs;
+                font-size: $font-size-sm;
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+body {
+  margin: 0;
+  background-color: $backgroundColor;
+  color: $mainColor;
+  font-family: $mainFont;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  transition: 0.2s linear;
+}
+
