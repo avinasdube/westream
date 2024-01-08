@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+
+.viewbarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $mediumSpacing;
+
+    .videoPlayer {
+        width: auto;
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+    }
+
+    .videoTitle {
+        font-size: $font-size-md;
+    }
+
+    .videoDescrip{
+        font-size: $font-size-sm;
+        background-color: rgb(50, 50, 50);
+        border-radius: 10px;
+        padding: 0.8rem;
+    }
+
+    @media screen and (max-width: $breakpoint-xs) {
+        .videoTitle{
+            font-size: $font-size-sm;
+        }
+
+        .videoDescrip{
+            font-size: $font-size-xs;
+        }
+    }
+}

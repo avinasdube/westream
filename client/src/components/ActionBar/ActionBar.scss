@@ -1,0 +1,69 @@
+@import '../../styles/variables';
+
+.actionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $mediumSpacing * 2;
+
+    .actionMenu {
+        display: flex;
+        flex-direction: column;
+        gap: $smallSpacing;
+
+        .menuOption {
+            display: flex;
+            align-items: center;
+            gap: $smallSpacing;
+            padding: $padding-sm;
+            border-radius: $borderRadius;
+            transition: 0.2s linear;
+
+            &:hover {
+                background-color: rgb(50, 50, 50);
+            }
+
+            &.active {
+                background-color: rgb(50, 50, 50);
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+
+            .menuIcon {
+                width: 25px;
+                height: 25px;
+                object-fit: contain;
+            }
+
+            .optionLabel {
+                font-weight: 600;
+            }
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        gap: $mediumSpacing;
+
+        .actionMenu {
+            flex-direction: row;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-xs) {
+
+        .actionMenu {
+            .menuOption {
+                padding: $padding-xs;
+                .menuIcon {
+                    width: 15px;
+                    height: 15px;
+                    object-fit: contain;
+                }
+                .optionLabel{
+                    font-size: $font-size-xs;
+                }
+            }
+        }
+    }
+}
