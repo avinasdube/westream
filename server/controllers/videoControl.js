@@ -12,10 +12,12 @@ export const uploadNewVideo = async (req, res) => {
         return res.status(500).send('Error uploading files');
       }
 
+      // setting video details
       const { title, description } = req.body;
       const subtitles = JSON.parse(req.body.subtitles || '[]');
       const videoFilePath = req.file.originalname;
 
+      // creating new video object with above details using video model
       const newVideo = new Video({
         title,
         description,
@@ -23,9 +25,10 @@ export const uploadNewVideo = async (req, res) => {
         videoFilePath,
       })
 
+      // saving newWideo to database
       await newVideo.save();
 
-      res.status(201).json({message: "Video Uploaded"})
+      res.status(201).json({ message: "Video Uploaded" })
 
     })
   } catch (error) {
@@ -33,11 +36,13 @@ export const uploadNewVideo = async (req, res) => {
   }
 }
 
-export const getAllVideos = async (req, res)=>{
-  try{
+// function to fetch all videos
+export const getAllVideos = async (req, res) => {
+  try {
+    // fetching all videos from videos document
     const AllVideos = await Video.find();
     res.status(200).json(AllVideos)
-  }catch(error){
+  } catch (error) {
     console.log(error)
   }
 } 
