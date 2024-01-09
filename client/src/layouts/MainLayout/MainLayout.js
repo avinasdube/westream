@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './MainLayout.scss';
 import ActionBar from '../../components/ActionBar/ActionBar';
 import ViewBar from '../../components/ViewBar/ViewBar';
-import SuggestionBar from '../../components/SuggestionBar/SuggestionBar';
 import UploadForm from '../../components/UploadForm/UploadForm';
 
 const MainLayout = () => {
@@ -14,10 +13,7 @@ const MainLayout = () => {
             </div>
             <div className="mainMiddleContainer">
                 {page === 'view' && <ViewBar />}
-                {page === 'upload' && <UploadForm />}
-            </div>
-            <div className="mainRightContainer">
-                <SuggestionBar />
+                {page === 'upload' && <UploadForm setPage={setPage} />}
             </div>
         </div>
     )
