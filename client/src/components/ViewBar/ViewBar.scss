@@ -7,9 +7,15 @@
 
     .videoPlayer {
         width: auto;
+        display: flex;
+        flex-direction: column;
+        gap: $mediumSpacing;
+        cursor: pointer;
+
         video {
             width: 100%;
             border-radius: 10px;
+            transition: 0.2s ease-in-out;
         }
     }
 
@@ -17,7 +23,7 @@
         font-size: $font-size-md;
     }
 
-    .videoDescrip{
+    .videoDescrip {
         font-size: $font-size-sm;
         background-color: rgb(50, 50, 50);
         border-radius: 10px;
@@ -25,11 +31,11 @@
     }
 
     @media screen and (max-width: $breakpoint-xs) {
-        .videoTitle{
+        .videoTitle {
             font-size: $font-size-sm;
         }
 
-        .videoDescrip{
+        .videoDescrip {
             font-size: $font-size-xs;
         }
     }

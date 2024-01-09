@@ -6,11 +6,11 @@
     padding: 1.5rem;
 
     .mainLeftContainer{
-        flex: 1;
+        flex: 2;
     }
 
     .mainMiddleContainer{
-        flex: 4;
+        flex: 8;
         height: 600px;
         scroll-behavior: smooth;
         overflow-y: scroll;
@@ -20,15 +20,11 @@
         }
     }
 
-    .mainRightContainer{
-        flex: 2;
-    }
-
     @media screen and (max-width: $breakpoint-lg) {
         flex-direction: column;
         padding: 1rem;
 
-        .mainLeftContainer, .mainMiddleContainer, .mainRightContainer{
+        .mainLeftContainer, .mainMiddleContainer{
             flex: none;
             overflow-y: none;
             height: auto;

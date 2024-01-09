@@ -1,0 +1,27 @@
+@import '../../styles/variables';
+
+
+.moreVideosContainer {
+    display: flex;
+    flex-direction: column;
+    gap: $mediumSpacing;
+    margin-top: $mediumSpacing;
+
+    .videosList {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $mediumSpacing;
+    }
+
+    @media screen and (max-width: $breakpoint-md) {
+        .videosList {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-xs) {
+        .videosList {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+}

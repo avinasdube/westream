@@ -18,12 +18,12 @@
 
     @media screen and (max-width: $breakpoint-xs) {
         .appLogo{
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
         }
 
         .logoLabel{
-            font-size: $font-size-sm;
+            font-size: $font-size-md;
         }
     }
 }

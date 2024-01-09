@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './ViewBar.scss';
-
-import cottonbro from '../../assets/videos/production-720p.mp4';
+import MoreVideos from '../MoreVideos/MoreVideos';
+import { API_BASE_URL, getVideos } from '../../api/api';
+import { API_ENDPOINTS } from '../../utils/constants';
 
 const ViewBar = () => {
+  const [videos, setVideos] = useState([]);
+  const [currentVideo, setCurrentVideo] = useState();
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const response = await getVideos();
+      setVideos(response.data)
+    }
+    fetchVideos();
+  }, [])
+
   return (
     <div className="viewbarContainer">
-      <div className="videoPlayer">
-          <video controls src={cottonbro} />
-      </div>
-      <div className="videoTitle">Girls showing martial arts in a cave</div>
-      <div className="videoDescrip">Two girls in a primal costume showing off martial art with fire in a cave.</div>
+      {currentVideo && <>
+        <div className="videoPlayer">
+          <video controls src={`${API_BASE_URL}${API_ENDPOINTS.uploadPath}/${currentVideo.videoFilePath}`} />
+        </div>
+        <div className="videoTitle">{currentVideo.title}</div>
+        <div className="videoDescrip">{currentVideo.description}</div>
+      </>}
+      <MoreVideos videos={videos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} />
     </div>
   )
 }
