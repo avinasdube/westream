@@ -1,7 +1,8 @@
 import axios from "axios";
+import { API_ENDPOINTS } from "../utils/constants";
 
 // setting api base url based on node environment
-const API_BASE_URL = process.env.NODE_ENV === 'development' ?
+export const API_BASE_URL = process.env.NODE_ENV === 'development' ?
     process.env.REACT_APP_LOCAL_URL :
     process.env.REACT_APP_DEPLOYED_URL
 
@@ -15,4 +16,10 @@ const API = axios.create({
 })
 
 // exporting custom functions to send api request
-export const sayHi = () => API.get()
+export const uploadnew = (formData) => API.post(`${API_ENDPOINTS.uploadVideo}`, formData, {
+    headers: {
+        'Content-Type': 'multipart/form-data'
+    }
+})
+
+export const getVideos = () => API.get(`${API_ENDPOINTS.getVideos}`)
