@@ -21,19 +21,26 @@ const corsOptions = {
 
 // configuring readymade middlewares
 app.use(cors(corsOptions));
-app.use(express.json({ limit: "16kb" }))
-app.use(express.urlencoded({ extended: true, limit: "16kb" }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use("/api/uploads", express.static('./uploads'))
+
+// importing and setting up routes
+import videoRoute from './routes/videoRoute.js';
+
+app.use("/api/video", videoRoute)
 
 // connecting to database and then starting server
 connectDB()
     .then(() => {
         app.listen(PORT || 8800, () => {
             console.log(`Server is running at port : ${PORT}`);
-            app.get('/api', (req, res) => {
-                res.status(201).send("Ram-Ram Avinash, calling from app.js. Your server is running fine.");
+            app.get("/api/ramram", (req, res) => {
+                res.status(201).send("Ram Ram, from app.js ! Your server is running successfully.")
             })
         })
     })
     .catch((error) => {
         console.log("Error starting server.", error)
     })
+    
