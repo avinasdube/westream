@@ -8,5 +8,24 @@ body {
   font-size: $font-size-sm;
   font-weight: 500;
   transition: 0.2s linear;
-}
 
+  .logoLoad{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+
+    a {
+      margin-left: 5px;
+      color: $accentColor;
+    }
+  }
+}

@@ -11,7 +11,8 @@
 
     .mainMiddleContainer{
         flex: 8;
-        height: 600px;
+        padding: $padding-sm;
+        height: 560px;
         scroll-behavior: smooth;
         overflow-y: scroll;
     
@@ -28,6 +29,12 @@
             flex: none;
             overflow-y: none;
             height: auto;
+        }
+    }
+
+    @media screen and (max-width: $breakpoint-sm) {
+        .mainMiddleContainer{
+            padding: 0;
         }
     }
 }

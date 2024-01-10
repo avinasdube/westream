@@ -1,5 +1,11 @@
 @import '../../styles/variables';
 
+.menuIcon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
 .actionContainer {
     display: flex;
     flex-direction: column;
@@ -30,12 +36,6 @@
                 transform: scale(0.95);
             }
 
-            .menuIcon {
-                width: 25px;
-                height: 25px;
-                object-fit: contain;
-            }
-
             .optionLabel {
                 font-weight: 600;
             }
@@ -55,12 +55,14 @@
         .actionMenu {
             .menuOption {
                 padding: $padding-xs;
+
                 .menuIcon {
                     width: 15px;
                     height: 15px;
                     object-fit: contain;
                 }
-                .optionLabel{
+
+                .optionLabel {
                     font-size: $font-size-xs;
                 }
             }
