@@ -12,11 +12,14 @@ const MoreVideos = ({ videos, setCurrentVideo, currentVideo }) => {
         <div className="moreVideosContainer">
             {currentVideo && <div id="h1">More Videos</div>}
             <div className="videosList">
-                {allVideos && allVideos.map((video, index) => (
+                {allVideos.length !== 0 ? allVideos.map((video, index) => (
                     <div className="videoPlayer" onClick={() => setCurrentVideo(video)} key={index}>
                         <video src={`${API_BASE_URL}${API_ENDPOINTS.uploadPath}/${video.videoFilePath}`} className="video" />
                         <div>{video.title}</div>
-                    </div>))}
+                    </div>)) :
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+                        No videos to show
+                    </div>}
             </div>
         </div>
     )
