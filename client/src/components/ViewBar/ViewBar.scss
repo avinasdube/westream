@@ -32,8 +32,58 @@
         }
     }
 
-    .videoTitle {
-        font-size: $font-size-md;
+    .titleMain {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .videoTitle {
+            font-size: $font-size-md;
+        }
+
+        .optionIcon {
+            width: 30px;
+            height: 30px;
+            object-fit: contain;
+            border-radius: 50%;
+            padding: 2px;
+            transition: 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #323232;
+            }
+        }
+
+        .delDrop {
+            position: absolute;
+            top: $largeSpacing;
+            right: $largeSpacing;
+            display: none;
+            background-color: $mainColor;
+            padding: $padding-xs;
+            color: $backgroundColor;
+            border-radius: $borderRadius;
+
+            &.active {
+                display: flex;
+            }
+
+            .delBtn {
+                font-size: 14px;
+                font-weight: 600;
+                cursor: default;
+
+                &:hover,
+                &:active {
+                    color: red;
+                }
+
+                &:active {
+                    transform: scale(0.95);
+                }
+            }
+        }
     }
 
     .videoDescrip {
@@ -44,8 +94,8 @@
     }
 
     @media screen and (max-width: $breakpoint-sm) {
-        .videoPlayer{
-            .subtt{
+        .videoPlayer {
+            .subtt {
                 font-size: 10px;
                 right: 43%;
             }
@@ -54,11 +104,12 @@
 
     @media screen and (max-width: $breakpoint-xs) {
 
-        .videoPlayer{
-            .subtt{
+        .videoPlayer {
+            .subtt {
                 right: 40%;
             }
         }
+
         .videoTitle {
             font-size: $font-size-sm;
         }

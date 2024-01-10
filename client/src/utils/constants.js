@@ -2,5 +2,6 @@
 export const API_ENDPOINTS = {
     uploadVideo: "/video/uploadvideo",
     getVideos: "/video/getvideos",
-    uploadPath: "/uploads"
+    uploadPath: "/uploads",
+    deleteVideo: "/video/deletevideo"
 }
