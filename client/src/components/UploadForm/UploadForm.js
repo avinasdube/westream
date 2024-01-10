@@ -1,24 +1,41 @@
 import React, { useState } from 'react';
 import './UploadForm.scss';
 import uploadVideo from '../../assets/icons/upload.png';
+import cancel from '../../assets/icons/cancel.png';
+import info from '../../assets/icons/info.png';
 import { uploadnew } from '../../api/api';
 
 const UploadForm = ({ setPage }) => {
     // defining states to handle form data change
+    const [currentVidSrc, setCurrentVidSrc] = useState(null)
     const [videoFile, setVideoFile] = useState(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [subtitle, setSubtitle] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
 
     // function to handle change in file input
     const handleFileChange = (e) => {
         const file = e.target.files[0]
-        setVideoFile(file)
+        if (file) {
+            const videoSrc = URL.createObjectURL(file);
+            setCurrentVidSrc(videoSrc)
+            setVideoFile(file)
+        }
+    }
+
+    const handleInfoToggle = () => {
+        isOpen === false ? setIsOpen(true) : setIsOpen(false)
     }
 
     // function to handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault(); // prevent default reload
+
+        if (!title || !description || !subtitle || !videoFile) {
+            alert('All fields are required to fill')
+            return;
+        }
 
         // splitting the input into lines and then extracting timestamps and texts from them
         const subtitleLines = subtitle.split('\n');
@@ -66,24 +83,33 @@ const UploadForm = ({ setPage }) => {
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 {/*Video file input */}
 
-                <div id="h1">Select your video file</div>
-                <input
-                    id="upldvd"
-                    type="file"
-                    accept="video/*"
-                    onChange={handleFileChange}
-                    hidden >
-                </input>
-                <label
-                    className="uploadBox"
-                    htmlFor="upldvd">
-                    <img
-                        className="formUploadIcon"
-                        src={uploadVideo}
-                        alt=''>
-
-                    </img>
-                </label>
+                <div className="headingBar">
+                    <div id="h1">{currentVidSrc ? 'Selected Video File' : 'Select your video file'}</div>
+                    {currentVidSrc && <img className="menuIcon" src={cancel} alt='' onClick={() => setCurrentVidSrc(null)}></img>}
+                </div>
+                {!currentVidSrc && <>
+                    <input
+                        id="upldvd"
+                        type="file"
+                        accept="video/*"
+                        onChange={handleFileChange}
+                        hidden >
+                    </input>
+                    <label
+                        className="uploadBox"
+                        htmlFor="upldvd">
+                        <img
+                            className="formUploadIcon"
+                            src={uploadVideo}
+                            alt=''>
+                        </img>
+                    </label>
+                </>}
+                {currentVidSrc &&
+                    <>
+                        <video src={currentVidSrc} style={{ borderRadius: '8px' }} />
+                        <p style={{ marginTop: '0' }}>{videoFile.name}</p>
+                    </>}
 
                 {/*Video title input */}
 
@@ -107,7 +133,18 @@ const UploadForm = ({ setPage }) => {
 
                 {/*Video subtitle input */}
 
-                <div id="h1">Enter your subtitles here (Timestamp Text)</div>
+                <div className="headingBar">
+                    <div id="h1">Enter your subtitles here</div>
+                    <img className="menuIcon" src={info} alt='' onClick={handleInfoToggle}></img>
+                    <div className={`infoBox ${isOpen === true ? 'active' : ''}`}>
+                        <div className='infoHeading'>Write subtitles in this format :</div>
+                        <p>
+                            00:00:01 Ram-Ram bhai sareya ne ! <br></br>
+                            00:00:03 Aaj hai mere coding ka 3sra din. <br></br>
+                            00:00:04 Subah maine kiya 3 ghante debugging.
+                        </p>
+                    </div>
+                </div>
                 <textarea
                     className="inputSubs"
                     placeholder="00:00:00 This is the first line of subtitle"
