@@ -60,6 +60,36 @@
             }
         }
 
+        .headingBar{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+
+            .infoBox{
+                background-color: $mainColor;
+                color: $backgroundColor;
+                font-size: 12px;
+                display: none;
+                gap: $smallSpacing;
+                position: absolute;
+                top: $mediumSpacing * 2;
+                right: 20px;
+                padding: $padding-sm;
+                border-radius: $borderRadius;
+                font-family: 'Courier New', Courier, monospace;
+
+                .infoHeading{
+                    font-weight: bold;
+                    font-family: $mainFont;
+                }
+
+                &.active{
+                    display: block;
+                }
+            }
+        }
+
         input,
         .inputSubs {
             width: auto;

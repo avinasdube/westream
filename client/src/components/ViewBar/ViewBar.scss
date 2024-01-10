@@ -11,11 +11,24 @@
         flex-direction: column;
         gap: $mediumSpacing;
         cursor: pointer;
+        position: relative;
 
         video {
             width: 100%;
-            border-radius: 10px;
+            border-radius: $borderRadius;
             transition: 0.2s ease-in-out;
+        }
+
+        .subtt {
+            background-color: $mainColor;
+            font-size: 12px;
+            text-align: center;
+            min-width: 100px;
+            color: $backgroundColor;
+            padding: 0.1rem 0.4rem;
+            position: absolute;
+            bottom: 2rem;
+            right: 45%;
         }
     }
 
@@ -30,7 +43,22 @@
         padding: 0.8rem;
     }
 
+    @media screen and (max-width: $breakpoint-sm) {
+        .videoPlayer{
+            .subtt{
+                font-size: 10px;
+                right: 43%;
+            }
+        }
+    }
+
     @media screen and (max-width: $breakpoint-xs) {
+
+        .videoPlayer{
+            .subtt{
+                right: 40%;
+            }
+        }
         .videoTitle {
             font-size: $font-size-sm;
         }
