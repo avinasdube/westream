@@ -22,4 +22,5 @@ export const uploadnew = (formData) => API.post(`${API_ENDPOINTS.uploadVideo}`, 
     }
 })
 
-export const getVideos = () => API.get(`${API_ENDPOINTS.getVideos}`)
+export const getVideos = () => API.get(`${API_ENDPOINTS.getVideos}`);
+export const deleteVideo = (vid) => API.delete(`${API_ENDPOINTS.deleteVideo}/${vid}`)
