@@ -45,4 +45,15 @@ export const getAllVideos = async (req, res) => {
   } catch (error) {
     console.log(error)
   }
-} 
+}
+
+// function to delete a selected video
+export const deleteThisVideo = async (req, res) => {
+  try {
+    const deleteID = req.params.vid;
+    const deleted = await Video.deleteOne({ _id: deleteID });
+    res.status(201).json({ message: "Deleted", deleted })
+  } catch (error) {
+    console.log(error);
+  }
+}
