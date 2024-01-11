@@ -1,5 +1,5 @@
 import express from "express";
-import { uploadNewVideo, getAllVideos, deleteThisVideo } from "../controllers/videoControl.js";
+import { uploadNewVideo, getAllVideos, deleteThisVideo, readSubtitle } from "../controllers/videoControl.js";
 
 // creating an express router
 const router = express.Router();
@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/uploadvideo", uploadNewVideo);
 router.get("/getvideos", getAllVideos)
 router.delete("/deletevideo/:vid", deleteThisVideo)
+router.get("/getsubtitles/:vid", readSubtitle)
 
 // exporting router
 export default router;
