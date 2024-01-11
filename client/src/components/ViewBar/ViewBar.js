@@ -2,65 +2,81 @@ import React, { useEffect, useRef, useState } from 'react';
 import './ViewBar.scss';
 import dots from '../../assets/icons/dots.png';
 import MoreVideos from '../MoreVideos/MoreVideos';
-import { API_BASE_URL, deleteVideo, getVideos } from '../../api/api';
+import { API_BASE_URL, deleteVideo, getSubtitles, getVideos } from '../../api/api';
 import { API_ENDPOINTS } from '../../utils/constants';
+import { parseTimestamp, parseVTTContent } from '../../utils/utilityFunctions';
 
 const ViewBar = () => {
-  // defining various states
+
+  // setting necessary states
   const [delOpen, setDelOpen] = useState(false);
   const [videos, setVideos] = useState([]);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [currentSubtitle, setCurrentSubtitle] = useState(null);
+  const [parsedSubtitle, setParsedSubtitle] = useState(null);
+
+  // defining videoRef
   const videoRef = useRef(null);
 
-  // fetching and setting videos on component mount
+  // fetching videos and subtitle on component mount
   useEffect(() => {
-    // a function to fetch videos from database using api
+
+    // api call to fetch video details
     const fetchVideos = async () => {
       const response = await getVideos();
       setVideos(response.data);
     };
+
+    // api call to fetch vtt subtitle file of current video
+    const fetchSubtitles = async () => {
+      if (currentVideo) {
+        const vid = currentVideo._id;
+        const gotSubt = await getSubtitles(vid);
+        const vttContent = gotSubt.data;
+
+        // parsing vttContent and setting parsedSubtitle
+        const parsedVTTContent = parseVTTContent(vttContent);
+        setParsedSubtitle(parsedVTTContent)
+      }
+    };
+
     fetchVideos();
-  }, []);
+    fetchSubtitles();
+  }, [currentVideo]); // update subtitles when the currentVideo changes
 
-  // a function to parse timestamp string to seconds
-  const parseTimestamp = (timestamp) => {
-    const [hours, minutes, seconds] = timestamp.split(':');
-    return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds);
-  };
-
+  // function to handle time update and subtitles (video progress with subtitles)
   const handleTimeUpdate = () => {
-    // setting playedSeconds of currently playing video using useRef
+    // getting playedSeconds of currently playing video using useRef
     const playedSeconds = videoRef.current.currentTime;
 
-    // finding subtitle that matches the current video time
-    const newSubtitle = currentVideo?.subtitles.find(
+    // finding subtitle that matches the current playedSecond
+    const newSubtitle = parsedSubtitle?.find(
       (subtitle) =>
         playedSeconds >= parseTimestamp(subtitle.timestamp) &&
-        playedSeconds <= parseTimestamp(subtitle.timestamp) + 3 // display subs for 3 seconds
+        playedSeconds <= parseTimestamp(subtitle.timestamp) + 3
     );
 
     // updating the current subtitle if newSubtitle is not same
     if (newSubtitle !== currentSubtitle) {
       setCurrentSubtitle(newSubtitle);
     }
-  }
+  };
 
   // function to handle delete dropdown
   const handleDelDropdown = () => {
-    delOpen === false ? setDelOpen(true) : setDelOpen(false);
-  }
+    setDelOpen((prevOpen) => !prevOpen);
+  };
 
   // function to handle video deletion
   const handleDelete = async () => {
     const vid = currentVideo._id;
     try {
-      await deleteVideo(vid)
-      window.location.reload()
+      await deleteVideo(vid);
+      window.location.reload();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div className="viewbarContainer">
@@ -77,9 +93,16 @@ const ViewBar = () => {
           </div>
           <div className="titleMain">
             <div className="videoTitle">{currentVideo.title}</div>
-            <img className="optionIcon" src={dots} alt='' onClick={handleDelDropdown}></img>
+            <img
+              className="optionIcon"
+              src={dots}
+              alt=""
+              onClick={handleDelDropdown}
+            ></img>
             <div className={`delDrop ${delOpen === true ? 'active' : ''}`}>
-              <div className="delBtn" onClick={handleDelete}>Delete</div>
+              <div className="delBtn" onClick={handleDelete}>
+                Delete
+              </div>
             </div>
           </div>
           <div className="videoDescrip">{currentVideo.description}</div>
