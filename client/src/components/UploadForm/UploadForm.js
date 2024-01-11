@@ -67,9 +67,7 @@ const UploadForm = ({ setPage }) => {
         } catch (error) {
             console.log(error)
         }
-
     }
-
 
     return (
         <div className="uploadFormContainer">
