@@ -2,7 +2,7 @@ import { createVTTSubtitleContent } from "./createVttContent.js";
 import fs from 'fs';
 import path from 'path';
 
-// middleware function to create VTT subtitle file
+// utility function to create VTT subtitle file
 export const createVTTFile = async (subtitles, videoId) => {
     try {
         // creating vtt subtitle using createVTTSubtitle function
@@ -15,7 +15,7 @@ export const createVTTFile = async (subtitles, videoId) => {
         }
 
         try {
-            // if 'subtitles' dir exists create a file named as given below and return the path
+            // if 'subtitles' dir exists create a file named as given below
             const filePath = path.resolve('subtitles', `${videoId}.vtt`);
 
             // after getting the filepath, write the vttContent to created filepath

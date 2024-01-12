@@ -43,4 +43,3 @@ connectDB()
     .catch((error) => {
         console.log("Error starting server.", error)
     })
-    

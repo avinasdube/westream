@@ -10,9 +10,15 @@
     font-weight: 300;
 }
 
-.uploadFormContainer {
+.uploadFormContainer,
+.formHeading,
+.blurBg,
+form {
     display: flex;
     flex-direction: column;
+}
+
+.uploadFormContainer {
     gap: $mediumSpacing;
 
     .formHeading {
@@ -20,24 +26,18 @@
         border-radius: $borderRadius;
         background-image: url('../../assets/images/welcome.jpg');
         background-position: bottom;
-        display: flex;
-        flex-direction: column;
 
         .blurBg {
             height: 140px;
             border-radius: $borderRadius;
             -webkit-backdrop-filter: blur(5px);
             backdrop-filter: blur(5px);
-            display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
     }
 
     form {
-        display: flex;
-        flex-direction: column;
         gap: $mediumSpacing;
 
         .uploadBox {
@@ -52,7 +52,7 @@
                 width: 40px;
                 height: 40px;
                 object-fit: cover;
-                transition: 0.2s linear;
+                transition: $transitionDefault;
 
                 &:hover {
                     transform: scale(1.09);
@@ -60,13 +60,13 @@
             }
         }
 
-        .headingBar{
+        .headingBar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: relative;
 
-            .infoBox{
+            .infoBox {
                 background-color: $mainColor;
                 color: $backgroundColor;
                 font-size: 12px;
@@ -79,12 +79,12 @@
                 border-radius: $borderRadius;
                 font-family: 'Courier New', Courier, monospace;
 
-                .infoHeading{
+                .infoHeading {
                     font-weight: bold;
                     font-family: $mainFont;
                 }
 
-                &.active{
+                &.active {
                     display: block;
                 }
             }
@@ -116,10 +116,10 @@
             font-size: $font-size-md;
             font-weight: 600;
             color: $mainColor;
-            transition: 0.2s linear;
+            transition: $transitionDefault;
 
             &:hover {
-                background-color: $accentHover;
+                background-color: $submitHover;
             }
 
             &:active {

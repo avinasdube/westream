@@ -6,14 +6,16 @@
     object-fit: contain;
 }
 
-.actionContainer {
+.actionContainer,
+.actionMenu {
     display: flex;
     flex-direction: column;
+}
+
+.actionContainer {
     gap: $mediumSpacing * 2;
 
     .actionMenu {
-        display: flex;
-        flex-direction: column;
         gap: $smallSpacing;
 
         .menuOption {
@@ -22,14 +24,11 @@
             gap: $smallSpacing;
             padding: $padding-sm;
             border-radius: $borderRadius;
-            transition: 0.2s linear;
+            transition: $transitionDefault;
 
-            &:hover {
-                background-color: rgb(50, 50, 50);
-            }
-
+            &:hover,
             &.active {
-                background-color: rgb(50, 50, 50);
+                background-color: $optionHover;
             }
 
             &:active {
