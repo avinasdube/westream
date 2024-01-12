@@ -1,9 +1,9 @@
-// font color variables
+// font styles
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap');
 
 $mainFont: 'Cabin', sans-serif;
 
-// Responsive font sizes
+// responsive font sizes
 @function calculate-font-size($size) {
     @return $size * 0.6rem;
 }
@@ -17,11 +17,15 @@ $font-size-lg: calculate-font-size(5);
 $backgroundColor: #111111;
 $mainColor: #F6F6F6;
 $accentColor: #007AD9;
-$accentHover: #12199A;
+$submitHover: #12199A;
+$optionHover: #323232;
 
 // border
 $borderStandard: 2px solid $mainColor;
 $borderRadius: 8px;
+
+// transition
+$transitionDefault: 0.2s ease-in-out;
 
 // padding
 $padding-xs: 0.4rem 0.6rem;

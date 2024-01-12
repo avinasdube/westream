@@ -1,14 +1,16 @@
 @import '../../styles/variables';
 
-.viewbarContainer {
+.viewbarContainer,
+.videoPlayer {
     display: flex;
     flex-direction: column;
+}
+
+.viewbarContainer {
     gap: $mediumSpacing;
 
     .videoPlayer {
         width: auto;
-        display: flex;
-        flex-direction: column;
         gap: $mediumSpacing;
         cursor: pointer;
         position: relative;
@@ -16,7 +18,7 @@
         video {
             width: 100%;
             border-radius: $borderRadius;
-            transition: 0.2s ease-in-out;
+            transition: $transitionDefault;
         }
 
         .subtt {
@@ -30,7 +32,6 @@
             bottom: 1rem;
             left: 50%;
             transform: translateX(-50%);
-            /* Center horizontally */
         }
     }
 
@@ -50,10 +51,10 @@
             object-fit: contain;
             border-radius: 50%;
             padding: 2px;
-            transition: 0.2s ease-in-out;
+            transition: $transitionDefault;
 
             &:hover {
-                background-color: #323232;
+                background-color: $optionHover;
             }
         }
 
@@ -90,7 +91,7 @@
 
     .videoDescrip {
         font-size: $font-size-sm;
-        background-color: rgb(50, 50, 50);
+        background-color: $optionHover;
         border-radius: 10px;
         padding: 0.8rem;
     }

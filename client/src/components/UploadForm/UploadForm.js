@@ -24,6 +24,7 @@ const UploadForm = ({ setPage }) => {
         }
     }
 
+    // function to handle info dropdown toggle
     const handleInfoToggle = () => {
         isOpen === false ? setIsOpen(true) : setIsOpen(false)
     }

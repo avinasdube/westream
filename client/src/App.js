@@ -4,8 +4,10 @@ import MainLayout from './layouts/MainLayout/MainLayout';
 import Logo from './components/Logo/Logo';
 
 function App() {
+  // state to imitate loading
   const [loading, setLoading] = useState(false);
 
+  // load app logo on every refresh/component mount
   useEffect(() => {
     setLoading(true)
     setTimeout(() => {
@@ -22,7 +24,7 @@ function App() {
         <>
           <MainLayout />
         </>}
-          <div className="footer">Designed and Developed By <a href='https://github.com/avinasdube' alt=''> Avinash Dubey</a></div>
+      <div className="footer">Designed and Developed By <a href='https://github.com/avinasdube' alt=''> Avinash Dubey</a></div>
     </div>
   )
 }

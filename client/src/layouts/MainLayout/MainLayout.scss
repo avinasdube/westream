@@ -1,31 +1,32 @@
 @import '../../styles/variables';
 
-.layoutContainer{
+.layoutContainer {
     display: flex;
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: $mediumSpacing;
+    padding: $padding-md;
 
-    .mainLeftContainer{
+    .mainLeftContainer {
         flex: 2;
     }
 
-    .mainMiddleContainer{
+    .mainMiddleContainer {
         flex: 8;
         padding: $padding-sm;
         height: 560px;
         scroll-behavior: smooth;
         overflow-y: scroll;
-    
-        &::-webkit-scrollbar{
+
+        &::-webkit-scrollbar {
             width: 0;
         }
     }
 
     @media screen and (max-width: $breakpoint-lg) {
         flex-direction: column;
-        padding: 1rem;
+        padding: $padding-sm;
 
-        .mainLeftContainer, .mainMiddleContainer{
+        .mainLeftContainer,
+        .mainMiddleContainer {
             flex: none;
             overflow-y: none;
             height: auto;
@@ -33,7 +34,7 @@
     }
 
     @media screen and (max-width: $breakpoint-sm) {
-        .mainMiddleContainer{
+        .mainMiddleContainer {
             padding: 0;
         }
     }

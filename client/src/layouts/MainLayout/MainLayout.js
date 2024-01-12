@@ -5,6 +5,7 @@ import ViewBar from '../../components/ViewBar/ViewBar';
 import UploadForm from '../../components/UploadForm/UploadForm';
 
 const MainLayout = () => {
+    // state to manage component render
     const [page, setPage] = useState('view')
     return (
         <div className="layoutContainer">
